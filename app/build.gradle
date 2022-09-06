@@ -4,14 +4,15 @@ plugins {
 }
 
 android {
+    def code = System.env.BUILD_NUMBER
     compileSdk 32
     buildToolsVersion '32.0.0'
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdk 28
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode code
+        versionName code
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
