@@ -11,8 +11,9 @@ android {
         applicationId "com.example.myapplication"
         minSdk 28
         targetSdk 32
-        versionCode code
-        versionName String.format('%d.%d', code, 0)
+        versionCode System.getenv("BUILD_NUMBER") as Integer ?: 9999
+        versionName "1"
+        //"String.format('%d.%d', code, 0)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
