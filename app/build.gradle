@@ -2,7 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-
+ext.versionMajor = 1
+ext.versionMinor = 2
 android {
     compileSdk 32
     buildToolsVersion '32.0.0'
@@ -12,8 +13,10 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        versionName computeVersionName()
+        versionCode computeVersionCode()
     }
 
     buildTypes {
@@ -29,6 +32,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+def computeVersionName() {
+    // Basic <major>.<minor> version name
+    return String.format('%d.%d', versionMajor, versionMinor)
+}
+
+// Will return 120042 for Jenkins build #42
+def computeVersionCode() {
+    // Major + minor + Jenkins build number (where available)
+    return (versionMajor * 100000)
+    + (versionMinor * 10000)
+    + Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
 }
 
 dependencies {
