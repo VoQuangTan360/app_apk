@@ -23,7 +23,7 @@ class onboardingstart : AppCompatActivity() {
     private  lateinit var onboardingitemAdapter: onboardingitemAdapter
     private lateinit var indicacatorsContainer: LinearLayout
     private lateinit var share: SharedPreferences
-    private  var test =0
+
     private var isRemembered= false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
